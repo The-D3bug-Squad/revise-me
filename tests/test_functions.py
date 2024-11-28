@@ -3,6 +3,8 @@ import unittest
 from math import factorial
 from main import *
 
+
+
 class TestChallenge(unittest.TestCase):
 
     def test_find_minimum(self):
