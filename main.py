@@ -3,25 +3,33 @@ import string as st
 
 def find_minimum(numbers):
     """Returns the smallest number in a list. Return None for an empty list."""
-    return min(numbers) if numbers else None
+    if numbers == []:
+        return None
+    else:
+        return min(numbers)
 
 def calculate_factorial(n):
     """Calculates the factorial of a non-negative integer iteratively."""
-    x = 1
-    for i in range(1,n+1):
-        x *= i
-    return x
+    number = 1
+    if n>0:
+        for x in range(1,n+1):
+            number*=x
+
+    return number
 
 def unique_elements(items):
     """Returns a list of unique elements, maintaining their order."""
-    return sorted(list(set(items)))
+    lst = set(items)
+    return sorted(lst)
 
-def check_palindrome(string):
+def check_palindrome(string:str):
     """Returns True if the input string is a palindrome, False otherwise."""
-    string = string.replace(" ","")
-    reversed_word = string[::-1]
-    return string.lower() == reversed_word.lower()
+    palindrome = []
+    for x in string.lower():
+        if x.isalpha():
+            palindrome.append(x)
 
+    return palindrome==palindrome[::-1]
 
 
 def fibonacci_sequence(n):
@@ -36,28 +44,37 @@ def fibonacci_sequence(n):
         b = c
     return list1[:n]
 
-
-
 def find_max(numbers):
     """Returns the largest number in a list. Return None for an empty list."""
-    return max(numbers)
+    number = 0
+    for x in numbers:
+        if x > number:
+            number = x
+
+    return number
 
 def find_min(numbers):
     """Returns the smallest number in a list. Return None for an empty list."""
-    return min(numbers)
+    if numbers == []:
+        return None
+    else:
+        return min(numbers)
 
 def find_average(numbers):
     """Returns the average of a list of numbers. Return None for an empty list."""
-    return sum(numbers)/len(numbers)
+    sum_numbers = 0
+    for x in numbers:
+        sum_numbers+=x
+    return sum_numbers/len(numbers)
 
 def find_even_numbers(numbers):
     """Returns a list of even numbers in a list."""
-    even = tuple(filter(lambda x:x % 2 == 0,numbers))
-    return even
+    even_list = [x for x in numbers if x%2==0]  
+    return tuple(even_list)
 
 def find_odd_numbers(numbers):
-    odd = list(filter(lambda x:x % 2 != 0,numbers))
-    return tuple(odd)
+    odd_list = [x for x in numbers if x%2!=0]
+    return tuple(odd_list)
 
 def find_number_of_even_numbers(numbers):
     """Returns the number of even numbers in a list."""
@@ -65,7 +82,6 @@ def find_number_of_even_numbers(numbers):
 
 def find_number_of_odd_numbers(numbers):
     """Returns the number of odd numbers in a list."""
-
     return  len(find_odd_numbers(numbers))
 
 def return_list_stats(numbers):
@@ -82,7 +98,7 @@ def return_list_stats(numbers):
     }
     return stats
 
-def process_characters(string):
+def process_characters(string:str):
     """Returns a dictionary with the number of letters, digits, and special characters in a string."""
     list_of_nums = []
     list_of_chars = []
@@ -144,4 +160,6 @@ def text_to_morse(text):
 
     return newtext
 
-
+if __name__=="__main__":
+    print(check_palindrome("A man a plan a canal Panama"))
+    
